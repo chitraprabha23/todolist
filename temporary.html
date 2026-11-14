@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WELCOME</title>
+</head>
+
+<body>
+    <center>
+        <h1>TO-DO LIST</h1>
+
+        <input type="text" id="input">
+        <button onclick="createtask()">Click</button>
+
+        <h1>TASK LIST</h1>
+
+        <div id="list"></div>
+    </center>
+
+    <script>
+        function createtask() {
+
+            let task = document.getElementById("input").value;
+
+            if (task == "") {
+                alert("Enter the task");
+                return;
+            }
+
+            let div = document.createElement("div");
+
+            let h3 = document.createElement("h3");
+            h3.textContent = task;
+
+            let deletebtn = document.createElement("button");
+            deletebtn.textContent = "Delete";
+
+            deletebtn.onclick = function() {
+                div.remove();
+            };
+
+            let completebtn = document.createElement("button");
+            completebtn.textContent = "Complete";
+
+            completebtn.onclick = function() {
+                h3.textContent = task + " - Completed";
+                completebtn.disabled = true;
+            };
+
+            div.appendChild(h3);
+            div.appendChild(deletebtn);
+            div.appendChild(completebtn);
+
+            document.getElementById("list").appendChild(div);
+
+            document.getElementById("input").value = "";
+        }
+    </script>
+
+</body>
+</html>
